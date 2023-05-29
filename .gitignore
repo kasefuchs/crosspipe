@@ -33,3 +33,7 @@ doc/api/
 
 # Configuration
 config.yaml
+
+# Generated
+*.g.dart
+*.freezed.dart
