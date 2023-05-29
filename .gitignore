@@ -30,3 +30,6 @@ doc/api/
 # IDE
 .idea/
 .vscode/
+
+# Configuration
+config.yaml
