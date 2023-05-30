@@ -42,14 +42,14 @@ abstract class AbstractConnection<StreamType extends Stream> {
     heartbeatTimeout?.cancel();
     heartbeatTimeout = Timer(
       application.config.security.authentication.heartbeatTimeout,
-          () => close(CloseEventData.SessionTimedOut),
+      () => close(CloseEventData.SessionTimedOut),
     );
   }
 
   void setIdentifyTimeout() {
     identifyTimeout = Timer(
       application.config.security.authentication.identifyTimeout,
-          () => close(CloseEventData.SessionTimedOut),
+      () => close(CloseEventData.SessionTimedOut),
     );
   }
 

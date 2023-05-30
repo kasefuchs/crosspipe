@@ -5,9 +5,9 @@ import 'data.dart';
 
 extension BetterAnsiPen on AnsiPen {
   static AnsiPen fromColor(Color color) => fromColorsData(
-    background: color.background,
-    foreground: color.foreground,
-  );
+        background: color.background,
+        foreground: color.foreground,
+      );
 
   static AnsiPen fromColorsData({
     ColorData? background,

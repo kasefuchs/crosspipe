@@ -1,4 +1,3 @@
-
 import '../../../../../structure/application.dart';
 import '../../../../../structure/logger/transport/abstract.dart';
 import '../../../../../structure/logger/transport/none.dart';

@@ -13,7 +13,7 @@ class FileLoggerTransport extends AbstractLoggerTransport<FileLoggerTransportOpt
   FileLoggerTransport(super.application) {
     Timer.periodic(
       options.flushInterval,
-          (_) => _flush(),
+      (_) => _flush(),
     );
   }
 

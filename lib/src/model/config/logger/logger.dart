@@ -9,7 +9,8 @@ part 'logger.g.dart';
 
 @Freezed(fromJson: false, toJson: true)
 class LoggerConfig with _$LoggerConfig {
-  const factory LoggerConfig(LogLevel level,
+  const factory LoggerConfig(
+    LogLevel level,
     LoggerTransportType type,
     AbstractLoggerTransportOptions options,
   ) = _LoggerConfig;
