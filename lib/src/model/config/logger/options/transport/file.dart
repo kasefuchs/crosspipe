@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../application/application.dart';
-import '../../../../../logger/transport/abstract.dart';
-import '../../../../../logger/transport/file.dart';
+import '../../../../../structure/application/application.dart';
+import '../../../../../structure/logger/transport/abstract.dart';
+import '../../../../../structure/logger/transport/file.dart';
 import '../../../../converter/duration.dart';
 import '../../../../converter/file.dart';
 import 'abstract.dart';

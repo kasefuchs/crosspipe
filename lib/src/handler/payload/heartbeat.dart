@@ -1,5 +1,5 @@
+import '../../model/enum/socket/payload.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/enum/socket/payload.dart';
 import 'mixin.dart';
 
 /// Handles the [Heartbeat] payload type.

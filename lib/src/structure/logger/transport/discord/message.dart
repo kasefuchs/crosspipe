@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../model/converter/uri.dart';
+import '../../../../model/converter/uri.dart';
 import 'embed/embed.dart';
 
 part 'message.freezed.dart';

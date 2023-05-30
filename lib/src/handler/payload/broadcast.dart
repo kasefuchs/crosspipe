@@ -1,9 +1,9 @@
+import '../../model/enum/socket/broadcast.dart';
+import '../../model/enum/socket/close.dart';
+import '../../model/enum/socket/payload.dart';
+import '../../model/enum/socket/permission.dart';
+import '../../model/payload/data/broadcast/root.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/enum/socket/broadcast.dart';
-import '../../structure/model/enum/socket/close.dart';
-import '../../structure/model/enum/socket/payload.dart';
-import '../../structure/model/enum/socket/permission.dart';
-import '../../structure/model/payload/data/broadcast/root.dart';
 import 'mixin.dart';
 
 /// Handles the [Broadcast] payload type.

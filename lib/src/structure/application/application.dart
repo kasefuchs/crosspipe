@@ -1,6 +1,6 @@
 import '../../handler/socket/websocket.dart';
 import '../logger/logger.dart';
-import '../model/config/application.dart';
+import '../../model/config/application.dart';
 import 'connection/abstract.dart';
 import 'http/server.dart';
 

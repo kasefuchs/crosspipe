@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import '../../model/enum/socket/close.dart';
+import '../../model/enum/socket/payload.dart';
+import '../../model/payload/root.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/enum/socket/close.dart';
-import '../../structure/model/enum/socket/payload.dart';
-import '../../structure/model/payload/root.dart';
 import '../payload/broadcast.dart';
 import '../payload/heartbeat.dart';
 import '../payload/identify.dart';

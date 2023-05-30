@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../application/application.dart';
-import '../../../../../logger/transport/abstract.dart';
-import '../../../../../logger/transport/stdout.dart';
+import '../../../../../structure/application/application.dart';
+import '../../../../../structure/logger/transport/abstract.dart';
+import '../../../../../structure/logger/transport/stdout.dart';
 import '../color/map.dart';
 import 'abstract.dart';
 

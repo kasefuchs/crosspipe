@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../model/converter/uri.dart';
+import '../../../../../model/converter/uri.dart';
 
 part 'footer.freezed.dart';
 part 'footer.g.dart';

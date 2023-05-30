@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../model/config/logger/options/color/data.dart';
-import '../../../../model/converter/color.dart';
-import '../../../../model/converter/datetime/iso8601.dart';
-import '../../../../model/converter/uri.dart';
+import '../../../../../model/config/logger/options/color/data.dart';
+import '../../../../../model/converter/color.dart';
+import '../../../../../model/converter/datetime/iso8601.dart';
+import '../../../../../model/converter/uri.dart';
 import 'field.dart';
 import 'footer.dart';
 

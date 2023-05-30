@@ -1,5 +1,6 @@
-import '../../model/config/logger/options/transport/none.dart';
-import '../../model/logger/record.dart';
+
+import '../../../model/config/logger/options/transport/none.dart';
+import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
 /// A logger transport that performs no logging.

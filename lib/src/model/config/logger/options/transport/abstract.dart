@@ -1,5 +1,6 @@
-import '../../../../../application/application.dart';
-import '../../../../../logger/transport/abstract.dart';
+
+import '../../../../../structure/application/application.dart';
+import '../../../../../structure/logger/transport/abstract.dart';
 import '../../../../enum/logger/transport.dart';
 import 'discord.dart';
 import 'file.dart';

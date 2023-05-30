@@ -5,8 +5,8 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
-import '../../../model/config/logger/options/transport/discord.dart';
-import '../../../model/logger/record.dart';
+import '../../../../model/config/logger/options/transport/discord.dart';
+import '../../../../model/logger/record.dart';
 import '../abstract.dart';
 import 'embed/embed.dart';
 import 'embed/field.dart';

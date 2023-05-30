@@ -1,5 +1,5 @@
+import '../../model/payload/data/abstract.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/payload/data/abstract.dart';
 
 /// Mixin used for payload handlers.
 mixin PayloadHandler<PayloadData extends AbstractPayloadData?> {

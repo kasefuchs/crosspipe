@@ -1,2 +1,2 @@
 export 'src/structure/application/application.dart';
-export 'src/structure/model/config/application.dart';
+export 'src/model/config/application.dart';

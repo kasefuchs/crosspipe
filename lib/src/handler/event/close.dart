@@ -1,5 +1,6 @@
+import '../../model/enum/socket/close.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/enum/socket/close.dart';
+
 
 /// Connection close handler.
 class OnCloseHandler {

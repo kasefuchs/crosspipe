@@ -1,6 +1,7 @@
+import '../../model/enum/socket/payload.dart';
+import '../../model/payload/data/hello.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/enum/socket/payload.dart';
-import '../../structure/model/payload/data/hello.dart';
+
 
 /// Connection open handler.
 class OnConnectHandler {

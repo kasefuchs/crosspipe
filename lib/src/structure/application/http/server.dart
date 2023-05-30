@@ -2,7 +2,7 @@ import 'dart:io' hide HttpServer;
 import 'dart:io' as IO;
 
 import '../../logger/logger.dart';
-import '../../model/config/server/http.dart';
+import '../../../model/config/server/http.dart';
 import '../application.dart';
 import 'response.dart';
 

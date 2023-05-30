@@ -1,12 +1,13 @@
 import 'package:bcrypt/bcrypt.dart';
 
+import '../../model/config/security/group.dart';
+import '../../model/config/security/user/user.dart';
+import '../../model/enum/socket/close.dart';
+import '../../model/enum/socket/payload.dart';
+import '../../model/payload/data/identify.dart';
+import '../../model/payload/data/ready.dart';
 import '../../structure/application/connection/abstract.dart';
-import '../../structure/model/config/security/group.dart';
-import '../../structure/model/config/security/user/user.dart';
-import '../../structure/model/enum/socket/close.dart';
-import '../../structure/model/enum/socket/payload.dart';
-import '../../structure/model/payload/data/identify.dart';
-import '../../structure/model/payload/data/ready.dart';
+
 import 'mixin.dart';
 
 /// Handles the [Identify] payload type.

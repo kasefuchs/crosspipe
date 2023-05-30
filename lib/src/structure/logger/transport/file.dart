@@ -3,8 +3,8 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 
-import '../../model/config/logger/options/transport/file.dart';
-import '../../model/logger/record.dart';
+import '../../../model/config/logger/options/transport/file.dart';
+import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
 /// A logger transport that writes log records to a file.

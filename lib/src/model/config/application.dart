@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yaml/yaml.dart';
 
-import '../../../utility/yaml.dart';
+import '../../utility/yaml.dart';
 import 'logger/logger.dart';
 import 'security/security.dart';
 import 'server/server.dart';

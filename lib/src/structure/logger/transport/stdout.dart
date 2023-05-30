@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:ansicolor/ansicolor.dart';
 import 'package:intl/intl.dart';
 
-import '../../model/config/logger/options/color/ansi.dart';
-import '../../model/config/logger/options/color/color.dart';
-import '../../model/config/logger/options/transport/stdout.dart';
-import '../../model/logger/record.dart';
+import '../../../model/config/logger/options/color/ansi.dart';
+import '../../../model/config/logger/options/color/color.dart';
+import '../../../model/config/logger/options/transport/stdout.dart';
+import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
 

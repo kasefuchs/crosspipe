@@ -1,6 +1,7 @@
-import '../../../../../application/application.dart';
-import '../../../../../logger/transport/abstract.dart';
-import '../../../../../logger/transport/none.dart';
+
+import '../../../../../structure/application/application.dart';
+import '../../../../../structure/logger/transport/abstract.dart';
+import '../../../../../structure/logger/transport/none.dart';
 import 'abstract.dart';
 
 /// Options for the none logger transport.

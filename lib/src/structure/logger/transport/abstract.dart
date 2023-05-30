@@ -1,5 +1,6 @@
+import '../../../model/logger/record.dart';
 import '../../application/application.dart';
-import '../../model/logger/record.dart';
+
 
 /// Abstract class representing a logger transport.
 abstract class AbstractLoggerTransport<OptionsType> {
