@@ -6,25 +6,19 @@ import '../application.dart';
 import '../logger/logger.dart';
 import 'response.dart';
 
-/// A simple HTTP server.
 class HttpServer {
-  /// The configuration for the HTTP server.
   final HttpServerConfig config;
 
-  /// The logger instance for the HTTP server.
   final Logger log;
 
-  /// A map that stores the routes and their corresponding handler functions.
   final Map<String, Future<void> Function(HttpRequest, HttpResponse)> _routes = {};
 
-  /// Internal HTTP server.
   late final IO.HttpServer _http;
 
   HttpServer(Application application)
       : config = application.config.server.http,
         log = application.log.child('Server');
 
-  /// Binds server to specified host and port.
   Future<void> bind() async {
     try {
       _http = await IO.HttpServer.bind(config.host, config.port);
@@ -37,15 +31,12 @@ class HttpServer {
     }
   }
 
-  /// Registers a route with the specified path and handler function.
   void registerRoute(String path, Future<void> Function(HttpRequest request, HttpResponse response) handler) =>
       _routes.putIfAbsent(path, () => handler);
 
-  /// Registers multiple routes at once.
   void registerRoutes(Map<String, Future<void> Function(HttpRequest request, HttpResponse response)> routes) =>
       _routes.addAll(routes);
 
-  /// Handles incoming HTTP request.
   Future<void> _handle(HttpRequest request) async {
     String routeKey = request.uri.path;
 
@@ -54,7 +45,6 @@ class HttpServer {
     (handler ?? _handleNotFound)(request, request.response);
   }
 
-  /// Handles a not found (404) response.
   Future<void> _handleNotFound(HttpRequest request, HttpResponse response) async =>
       await response.status(HttpStatus.notFound);
 }

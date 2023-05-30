@@ -7,7 +7,6 @@ import 'file.dart';
 import 'none.dart';
 import 'stdout.dart';
 
-/// Abstract base class for logger transport options.
 abstract class AbstractLoggerTransportOptions {
   AbstractLoggerTransportOptions();
 
@@ -24,9 +23,7 @@ abstract class AbstractLoggerTransportOptions {
     }
   }
 
-  /// Returns an instance of AbstractLoggerTransport based on the specified application.
   AbstractLoggerTransport get(Application application);
 
-  /// Converts the options to its JSON representation.
   Map toJson();
 }

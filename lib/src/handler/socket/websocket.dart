@@ -8,7 +8,6 @@ import 'abstract.dart';
 class WebSocketHandler extends AbstractSocketHandler {
   WebSocketHandler(super.application);
 
-  /// Handles and upgrades HTTP request to WebSocket connection.
   Future<void> handleRequest(HttpRequest request, HttpResponse response) async {
     final bool upgradable = WebSocketTransformer.isUpgradeRequest(request);
 

@@ -9,38 +9,25 @@ import '../../utility/id.dart';
 import '../application.dart';
 import '../logger/logger.dart';
 
-/// Represents an abstract connection to a stream of data.
 abstract class AbstractConnection<StreamType extends Stream> {
-  /// Reference to the application instance.
   final Application application;
 
-  /// The underlying data stream.
   final StreamType socket;
 
-  /// Logger instance for logging connection events.
   late final Logger log;
 
-  /// The ID of the connection session.
   late final String sessionId;
-
-  /// Timer for heartbeat timeout.
 
   Timer? heartbeatTimeout;
 
-  /// Timer for identification timeout.
   Timer? identifyTimeout;
 
-  /// Set of feeds associated with the connection.
   Set<String>? feeds;
-
-  /// User configuration associated with the connection.
 
   UserConfig? user;
 
-  /// Group configuration associated with the connection.
   GroupConfig? group;
 
-  /// Flag indicating if connection is identified.
   bool identified = false;
 
   AbstractConnection(this.application, this.socket) {
@@ -51,7 +38,6 @@ abstract class AbstractConnection<StreamType extends Stream> {
     log = application.log.child('Session $sessionId');
   }
 
-  /// Resets the heartbeat timeout.
   void resetHeartbeatTimeout() {
     heartbeatTimeout?.cancel();
     heartbeatTimeout = Timer(
@@ -60,7 +46,6 @@ abstract class AbstractConnection<StreamType extends Stream> {
     );
   }
 
-  /// Sets the identification timeout.
   void setIdentifyTimeout() {
     identifyTimeout = Timer(
       application.config.security.authentication.identifyTimeout,
@@ -68,19 +53,15 @@ abstract class AbstractConnection<StreamType extends Stream> {
     );
   }
 
-  /// Cancels all active timeouts.
   void cancelTimeouts() {
     heartbeatTimeout?.cancel();
     identifyTimeout?.cancel();
   }
 
-  /// Sends a payload over the connection.
   void send(PayloadType type, [AbstractPayloadData? data]);
 
-  /// Closes the connection with the specified event data.
   void close(CloseEventData event);
 
-  /// Gets the close event data for the connection.
   CloseEventData get closeData;
 
   @override

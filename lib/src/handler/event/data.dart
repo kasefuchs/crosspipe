@@ -9,25 +9,20 @@ import '../payload/heartbeat.dart';
 import '../payload/identify.dart';
 import '../payload/mixin.dart';
 
-/// Connection data handler.
 class OnDataHandler {
-  /// Set of payload handlers available to unauthorized connections.
   static const Set<PayloadType> _unauthenticatedAllowedHandlerTypes = {
     PayloadType.Identify,
     PayloadType.Heartbeat,
   };
 
-  /// Map containing payload types related to their handlers.
   static final Map<PayloadType, PayloadHandler> _payloadHandlers = {
     PayloadType.Identify: IdentifyHandler(),
     PayloadType.Heartbeat: HeartbeatHandler(),
     PayloadType.Broadcast: BroadcastHandler(),
   };
 
-  /// Handles receiving data from the connection.
   void call(AbstractConnection connection, String data) {
     try {
-      // I think I need to move the payload decoding to the connection itself
       Map<String, dynamic> payloadData = jsonDecode(data);
       RootPayload payload = RootPayload.fromJson(payloadData);
 
@@ -41,7 +36,6 @@ class OnDataHandler {
     }
   }
 
-  /// Processes the received payload.
   void _handlePayload(AbstractConnection connection, RootPayload payload) {
     PayloadHandler? handler = _payloadHandlers[payload.type];
 
@@ -57,11 +51,9 @@ class OnDataHandler {
     }
   }
 
-  /// Checks if the user has rights to use the handler corresponding to this payload type.
   bool _shouldCloseConnection(AbstractConnection connection, RootPayload payload) =>
       connection.user == null && !_unauthenticatedAllowedHandlerTypes.contains(payload.type);
 
-  /// Handles unknown errors.
   void _handleUnknownError(AbstractConnection connection, Object error, StackTrace trace) {
     connection.log.error('Unknown error: ${error.runtimeType} ${error}', trace.toString());
     connection.close(CloseEventData.UnknownError);

@@ -6,13 +6,10 @@ import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/identify.dart';
 import '../../model/payload/data/ready.dart';
-
 import '../../structure/connection/abstract.dart';
 import 'mixin.dart';
 
-/// Handles the [Identify] payload type.
 class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
-  /// Handles the [Identify] payload type.
   @override
   void call(AbstractConnection connection, IdentifyPayloadData data) {
     connection.identifyTimeout?.cancel();
@@ -40,7 +37,6 @@ class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
     );
   }
 
-  /// Checks and performs user authorization.
   (bool, UserConfig?, GroupConfig?) _performAuthentication(AbstractConnection connection, IdentifyPayloadData data) {
     try {
       UserConfig user = connection.application.config.security.users.firstWhere(

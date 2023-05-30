@@ -1,6 +1,5 @@
 import 'package:args/command_runner.dart';
 
-/// An abstract command with predefined parameters.
 abstract class AbstractCommand extends Command {
   AbstractCommand() {
     argParser

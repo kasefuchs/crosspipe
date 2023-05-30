@@ -6,15 +6,12 @@ import '../../model/payload/data/broadcast/root.dart';
 import '../../structure/connection/abstract.dart';
 import 'mixin.dart';
 
-/// Handles the [Broadcast] payload type.
 class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
-  /// Map containing broadcast payload types related to their permissions.
   static const Map<BroadcastType, Permission> _permissions = {
     BroadcastType.Execute: Permission.BroadcastExecute,
     BroadcastType.Message: Permission.BroadcastMessage,
   };
 
-  /// Handles the [Broadcast] payload type.
   @override
   void call(AbstractConnection connection, BroadcastRootPayload payload) {
     connection.log.debug('Received "${payload.type.name}" broadcast payload with data:', payload.data.toJson());
@@ -40,14 +37,12 @@ class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
     });
   }
 
-  /// Gets a list of connections based on a list of recipients.
   Iterable<AbstractConnection> _fetchRecipients(AbstractConnection connection, Iterable<String> recipients) {
     Iterable<AbstractConnection> allConnections = connection.application.connections.values;
 
     return recipients.expand((recipient) => _recipientFilter(allConnections, recipient)).toSet();
   }
 
-  /// Filters connections from recipient string.
   Iterable<AbstractConnection> _recipientFilter(Iterable<AbstractConnection> connections, String recipient) {
     List<String> recipientSplit = recipient.split(':');
 

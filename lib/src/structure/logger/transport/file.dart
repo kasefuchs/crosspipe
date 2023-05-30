@@ -7,9 +7,7 @@ import '../../../model/config/logger/options/transport/file.dart';
 import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
-/// A logger transport that writes log records to a file.
 class FileLoggerTransport extends AbstractLoggerTransport<FileLoggerTransportOptions> {
-  /// Queue to store the log records before flushing them to the file.
   Queue<LogRecord> _queuedLogRecords = Queue<LogRecord>();
 
   FileLoggerTransport(super.application) {
@@ -22,7 +20,6 @@ class FileLoggerTransport extends AbstractLoggerTransport<FileLoggerTransportOpt
   @override
   void push(LogRecord record) => _queuedLogRecords.addLast(record);
 
-  /// Flushes the queued log records by writing them to the file.
   void _flush() {
     while (_queuedLogRecords.isNotEmpty) {
       LogRecord record = _queuedLogRecords.removeFirst();

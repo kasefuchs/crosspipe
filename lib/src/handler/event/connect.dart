@@ -2,10 +2,7 @@ import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/hello.dart';
 import '../../structure/connection/abstract.dart';
 
-
-/// Connection open handler.
 class OnConnectHandler {
-  /// Handles connection open.
   void call(AbstractConnection connection) {
     connection.log.info('Connected');
 
@@ -20,7 +17,6 @@ class OnConnectHandler {
     _setTimeouts(connection);
   }
 
-  /// Sets connection timeouts.
   void _setTimeouts(AbstractConnection connection) {
     connection
       ..resetHeartbeatTimeout()

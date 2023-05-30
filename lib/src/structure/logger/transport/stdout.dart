@@ -9,8 +9,6 @@ import '../../../model/config/logger/options/transport/stdout.dart';
 import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
-
-/// A logger transport that writes log records to stdout.
 class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTransportOptions> {
   StdoutLoggerTransport(super.application);
 
@@ -21,7 +19,6 @@ class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTranspor
     );
   }
 
-  /// Creates a styled block of text with colors.
   String _createBlock(
     String content,
     Color currentColor, [
@@ -33,7 +30,6 @@ class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTranspor
     return body(' ${content} ') + end('\uE0B0');
   }
 
-  /// Creates a pretty log message with styling and formatting.
   String _createPrettyMessage(LogRecord record) {
     String upperLevel = record.level.name.toUpperCase();
     String formattedDate = _getFormattedDate(record.time);
@@ -69,6 +65,5 @@ class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTranspor
     return output;
   }
 
-  /// Formats a date according to the specified time format.
   String _getFormattedDate(DateTime time) => DateFormat(options.timeFormat).format(time);
 }

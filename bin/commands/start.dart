@@ -4,7 +4,6 @@ import 'package:crosspipe/crosspipe.dart';
 
 import 'abstract.dart';
 
-/// The command that starts the server
 class StartCommand extends AbstractCommand {
   final String name = 'start';
   final String description = 'Starts the server';
