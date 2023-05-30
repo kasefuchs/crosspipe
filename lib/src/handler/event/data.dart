@@ -41,7 +41,7 @@ class OnDataHandler {
 
     connection.log.debug('Received "${payload.type.name}" payload, with data:', payload.toJson());
 
-    if (_shouldCloseConnection(connection, payload)) {
+    if (_isUserUnauthenticatedForPayloadType(connection, payload)) {
       connection.close(CloseEventData.NotAuthenticated);
     } else if (handler != null) {
       handler(connection, payload.data);
@@ -51,7 +51,7 @@ class OnDataHandler {
     }
   }
 
-  bool _shouldCloseConnection(AbstractConnection connection, RootPayload payload) =>
+  bool _isUserUnauthenticatedForPayloadType(AbstractConnection connection, RootPayload payload) =>
       connection.user == null && !_unauthenticatedAllowedHandlerTypes.contains(payload.type);
 
   void _handleUnknownError(AbstractConnection connection, Object error, StackTrace trace) {
