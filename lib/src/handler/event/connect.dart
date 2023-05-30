@@ -1,6 +1,6 @@
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/hello.dart';
-import '../../structure/application/connection/abstract.dart';
+import '../../structure/connection/abstract.dart';
 
 
 /// Connection open handler.

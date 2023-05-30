@@ -1,10 +1,9 @@
 import 'dart:io';
 
-import 'package:crosspipe/src/handler/socket/abstract.dart';
-
-import '../../structure/application/connection/abstract.dart';
-import '../../structure/application/connection/websocket.dart';
-import '../../structure/application/http/response.dart';
+import '../../structure/connection/abstract.dart';
+import '../../structure/connection/websocket.dart';
+import '../../structure/http/response.dart';
+import 'abstract.dart';
 
 class WebSocketHandler extends AbstractSocketHandler {
   WebSocketHandler(super.application);

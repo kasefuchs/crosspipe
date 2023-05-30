@@ -1,4 +1,4 @@
-import '../../structure/application/application.dart';
+import '../../structure/application.dart';
 import '../event/close.dart';
 import '../event/connect.dart';
 import '../event/data.dart';

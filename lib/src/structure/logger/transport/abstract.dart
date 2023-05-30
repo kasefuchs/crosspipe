@@ -1,5 +1,5 @@
 import '../../../model/logger/record.dart';
-import '../../application/application.dart';
+import '../../application.dart';
 
 
 /// Abstract class representing a logger transport.

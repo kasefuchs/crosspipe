@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import '../../../model/enum/socket/close.dart';
-import '../../../model/enum/socket/payload.dart';
-import '../../../model/payload/data/abstract.dart';
-import '../../../model/payload/root.dart';
+import '../../model/enum/socket/close.dart';
+import '../../model/enum/socket/payload.dart';
+import '../../model/payload/data/abstract.dart';
+import '../../model/payload/root.dart';
 import '../application.dart';
 import 'abstract.dart';
 

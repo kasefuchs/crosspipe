@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../structure/application/application.dart';
+import '../../../../../structure/application.dart';
 import '../../../../../structure/logger/transport/abstract.dart';
 import '../../../../../structure/logger/transport/discord/transport.dart';
 import '../../../../converter/duration.dart';

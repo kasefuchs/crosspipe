@@ -3,7 +3,7 @@ import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/enum/socket/permission.dart';
 import '../../model/payload/data/broadcast/root.dart';
-import '../../structure/application/connection/abstract.dart';
+import '../../structure/connection/abstract.dart';
 import 'mixin.dart';
 
 /// Handles the [Broadcast] payload type.

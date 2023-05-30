@@ -2,7 +2,7 @@ import 'dart:io';
 
 import '../../model/enum/logger/level.dart';
 import '../../model/logger/record.dart';
-import '../application/application.dart';
+import '../application.dart';
 import 'transport/abstract.dart';
 
 class Logger {

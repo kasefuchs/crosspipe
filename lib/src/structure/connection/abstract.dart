@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import '../../../utility/id.dart';
-import '../../logger/logger.dart';
-import '../../../model/config/security/group.dart';
-import '../../../model/config/security/user/user.dart';
-import '../../../model/enum/socket/close.dart';
-import '../../../model/enum/socket/payload.dart';
-import '../../../model/payload/data/abstract.dart';
+import '../../model/config/security/group.dart';
+import '../../model/config/security/user/user.dart';
+import '../../model/enum/socket/close.dart';
+import '../../model/enum/socket/payload.dart';
+import '../../model/payload/data/abstract.dart';
+import '../../utility/id.dart';
 import '../application.dart';
+import '../logger/logger.dart';
 
 /// Represents an abstract connection to a stream of data.
 abstract class AbstractConnection<StreamType extends Stream> {

@@ -6,8 +6,8 @@ import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/identify.dart';
 import '../../model/payload/data/ready.dart';
-import '../../structure/application/connection/abstract.dart';
 
+import '../../structure/connection/abstract.dart';
 import 'mixin.dart';
 
 /// Handles the [Identify] payload type.
