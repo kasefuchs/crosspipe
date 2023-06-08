@@ -37,3 +37,6 @@ config.yaml
 # Generated
 *.g.dart
 *.freezed.dart
+
+# Node
+node_modules/
