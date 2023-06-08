@@ -7,6 +7,7 @@ part 'authentication.g.dart';
 
 @freezed
 class AuthenticationConfig with _$AuthenticationConfig {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory AuthenticationConfig({
     @DurationConverter() required Duration identifyTimeout,
     @DurationConverter() required Duration heartbeatTimeout,

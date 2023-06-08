@@ -13,6 +13,7 @@ part 'stdout.g.dart';
 class StdoutLoggerTransportOptions with _$StdoutLoggerTransportOptions implements AbstractLoggerTransportOptions {
   const StdoutLoggerTransportOptions._();
 
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory StdoutLoggerTransportOptions({
     required ColorMap colors,
     @Default(true) bool styled,

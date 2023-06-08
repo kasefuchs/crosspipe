@@ -15,7 +15,8 @@ part 'file.g.dart';
 @freezed
 class FileLoggerTransportOptions with _$FileLoggerTransportOptions implements AbstractLoggerTransportOptions {
   const FileLoggerTransportOptions._();
-
+  
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory FileLoggerTransportOptions({
     @JsonKey(name: 'path') @FileConverter() required File file,
     @DurationConverter() required Duration flushInterval,

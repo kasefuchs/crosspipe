@@ -17,6 +17,7 @@ class DiscordWebhookLoggerTransportOptions
     implements AbstractLoggerTransportOptions {
   const DiscordWebhookLoggerTransportOptions._();
 
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory DiscordWebhookLoggerTransportOptions({
     @UriConverter() required Uri url,
     @DurationConverter() required Duration flushInterval,

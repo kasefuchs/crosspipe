@@ -7,6 +7,7 @@ part 'group.g.dart';
 
 @freezed
 class GroupConfig with _$GroupConfig {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory GroupConfig({
     required String name,
     @Default(false) bool allowLoginIfNoPasswordSet,

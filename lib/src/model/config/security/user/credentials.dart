@@ -5,6 +5,7 @@ part 'credentials.g.dart';
 
 @freezed
 class UserCredentials with _$UserCredentials {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory UserCredentials({
     required String login,
     String? passwordHash,
