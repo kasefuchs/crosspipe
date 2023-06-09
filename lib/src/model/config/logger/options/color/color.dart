@@ -7,6 +7,7 @@ part 'color.g.dart';
 
 @freezed
 class Color with _$Color {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Color({
     ColorData? background,
     ColorData? foreground,

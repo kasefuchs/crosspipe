@@ -4,7 +4,6 @@ import '../enum/socket/payload.dart';
 import 'data/abstract.dart';
 
 part 'root.freezed.dart';
-
 part 'root.g.dart';
 
 @Freezed(fromJson: false, toJson: true)

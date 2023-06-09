@@ -7,6 +7,7 @@ part 'footer.g.dart';
 
 @freezed
 class EmbedFooter with _$EmbedFooter {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory EmbedFooter({
     required String text,
     @UriConverter() Uri? iconUrl,

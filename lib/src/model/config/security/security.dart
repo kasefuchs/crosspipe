@@ -9,6 +9,7 @@ part 'security.g.dart';
 
 @freezed
 class SecurityConfig with _$SecurityConfig {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory SecurityConfig({
     required AuthenticationConfig authentication,
     required List<GroupConfig> groups,

@@ -7,6 +7,7 @@ part 'execute.g.dart';
 
 @freezed
 class BroadcastExecutePayloadData with _$BroadcastExecutePayloadData implements AbstractBroadcastPayloadData {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory BroadcastExecutePayloadData({
     required Set<String> recipients,
     required String name,

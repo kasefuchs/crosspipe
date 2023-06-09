@@ -7,6 +7,7 @@ part 'ready.g.dart';
 
 @freezed
 class ReadyPayloadData with _$ReadyPayloadData implements AbstractPayloadData {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ReadyPayloadData({
     required String sessionId,
   }) = _ReadyPayloadData;

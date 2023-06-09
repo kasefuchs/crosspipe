@@ -8,6 +8,7 @@ part 'record.g.dart';
 
 @freezed
 class LogRecord with _$LogRecord {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory LogRecord({
     required LogLevel level,
     required int pid,

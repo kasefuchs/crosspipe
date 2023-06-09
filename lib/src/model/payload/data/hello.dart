@@ -8,6 +8,7 @@ part 'hello.g.dart';
 
 @freezed
 class HelloPayloadData with _$HelloPayloadData implements AbstractPayloadData {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory HelloPayloadData({
     @DurationConverter() required Duration heartbeatTimeout,
     @DurationConverter() required Duration identifyTimeout,

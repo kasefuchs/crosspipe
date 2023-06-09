@@ -13,6 +13,7 @@ part 'application.g.dart';
 
 @freezed
 class ApplicationConfig with _$ApplicationConfig {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ApplicationConfig({
     required LoggerConfig logger,
     required SecurityConfig security,

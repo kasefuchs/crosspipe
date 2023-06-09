@@ -12,6 +12,7 @@ part 'embed.g.dart';
 
 @freezed
 class Embed with _$Embed {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Embed({
     String? title,
     String? description,

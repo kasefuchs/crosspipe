@@ -7,6 +7,7 @@ part 'user.g.dart';
 
 @freezed
 class UserConfig with _$UserConfig {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory UserConfig({
     required UserCredentials credentials,
     required String group,

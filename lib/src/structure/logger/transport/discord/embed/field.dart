@@ -5,6 +5,7 @@ part 'field.g.dart';
 
 @freezed
 class EmbedField with _$EmbedField {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory EmbedField({
     required String name,
     required String value,

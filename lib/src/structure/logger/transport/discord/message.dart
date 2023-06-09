@@ -8,6 +8,7 @@ part 'message.g.dart';
 
 @freezed
 class Message with _$Message {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Message({
     @UriConverter() Uri? avatarUrl,
     String? content,

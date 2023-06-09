@@ -7,6 +7,7 @@ part 'identify.g.dart';
 
 @freezed
 class IdentifyPayloadData with _$IdentifyPayloadData implements AbstractPayloadData {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory IdentifyPayloadData({
     required String login,
     String? password,

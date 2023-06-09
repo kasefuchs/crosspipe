@@ -7,6 +7,7 @@ part 'server.g.dart';
 
 @freezed
 class ServerConfig with _$ServerConfig {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ServerConfig({
     required HttpServerConfig http,
   }) = _ServerConfig;
