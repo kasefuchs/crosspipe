@@ -1,23 +1,23 @@
 import '../../model/enum/socket/broadcast.dart';
 import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
-import '../../model/enum/socket/permission.dart';
 import '../../model/payload/data/broadcast/root.dart';
 import '../../structure/connection/abstract.dart';
+import '../../structure/prisma/client.dart';
 import 'mixin.dart';
 
 class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
-  static const Map<BroadcastType, Permission> _permissions = {
-    BroadcastType.Execute: Permission.BroadcastExecute,
-    BroadcastType.Message: Permission.BroadcastMessage,
+  static const Map<BroadcastType, GroupPermission> _permissions = {
+    BroadcastType.Execute: GroupPermission.broadcastExecute,
+    BroadcastType.Message: GroupPermission.broadcastMessage,
   };
 
   @override
   void call(AbstractConnection connection, BroadcastRootPayload payload) {
     connection.log.debug('Received "${payload.type.name}" broadcast payload with data:', payload.data.toJson());
 
-    Permission? requiredPermission = _permissions[payload.type];
-    bool hasAccess = connection.group!.permissions.contains(requiredPermission);
+    GroupPermission? requiredPermission = _permissions[payload.type];
+    bool hasAccess = connection.group!.permissions!.contains(requiredPermission);
 
     if (!hasAccess) return connection.close(CloseEventData.AccessDenied);
 
@@ -59,7 +59,7 @@ class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
           case 'session':
             return connections.where((connection) => connection.sessionId == value);
           case 'user':
-            return connections.where((connection) => connection.user?.credentials.login == value);
+            return connections.where((connection) => connection.user?.name == value);
           case 'group':
             return connections.where((connection) => connection.group?.name == value);
           case 'feed':

@@ -1,13 +1,12 @@
 import 'dart:async';
 
-import '../../model/config/security/group.dart';
-import '../../model/config/security/user/user.dart';
 import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/abstract.dart';
 import '../../utility/id.dart';
 import '../application.dart';
 import '../logger/logger.dart';
+import '../prisma/client.dart';
 
 abstract class AbstractConnection<StreamType extends Stream> {
   final Application application;
@@ -24,15 +23,15 @@ abstract class AbstractConnection<StreamType extends Stream> {
 
   Set<String>? feeds;
 
-  UserConfig? user;
+  User? user;
 
-  GroupConfig? group;
+  Group? group;
 
   bool identified = false;
 
   AbstractConnection(this.application, this.socket) {
     sessionId = generateRandomId(
-      application.config.security.authentication.sessionIdLength,
+      application.config.security.sessionIdLength,
       application.connections.keys,
     );
     log = application.log.child('Session $sessionId');
@@ -41,14 +40,14 @@ abstract class AbstractConnection<StreamType extends Stream> {
   void resetHeartbeatTimeout() {
     heartbeatTimeout?.cancel();
     heartbeatTimeout = Timer(
-      application.config.security.authentication.heartbeatTimeout,
+      application.config.security.heartbeatTimeout,
       () => close(CloseEventData.SessionTimedOut),
     );
   }
 
   void setIdentifyTimeout() {
     identifyTimeout = Timer(
-      application.config.security.authentication.identifyTimeout,
+      application.config.security.identifyTimeout,
       () => close(CloseEventData.SessionTimedOut),
     );
   }

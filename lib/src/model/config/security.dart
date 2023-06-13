@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'authentication.dart';
-import 'group.dart';
-import 'user/user.dart';
+import '../converter/duration.dart';
 
 part 'security.freezed.dart';
 part 'security.g.dart';
@@ -11,9 +9,9 @@ part 'security.g.dart';
 class SecurityConfig with _$SecurityConfig {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory SecurityConfig({
-    required AuthenticationConfig authentication,
-    required List<GroupConfig> groups,
-    required List<UserConfig> users,
+    @DurationConverter() required Duration identifyTimeout,
+    @DurationConverter() required Duration heartbeatTimeout,
+    @Default(16) int sessionIdLength,
   }) = _SecurityConfig;
 
   factory SecurityConfig.fromJson(Map<String, dynamic> json) => _$SecurityConfigFromJson(json);

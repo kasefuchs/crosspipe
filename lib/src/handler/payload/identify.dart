@@ -1,7 +1,6 @@
 import 'package:bcrypt/bcrypt.dart';
+import 'package:crosspipe/src/structure/prisma/client.dart';
 
-import '../../model/config/security/group.dart';
-import '../../model/config/security/user/user.dart';
 import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/identify.dart';
@@ -11,14 +10,14 @@ import 'mixin.dart';
 
 class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
   @override
-  void call(AbstractConnection connection, IdentifyPayloadData data) {
+  void call(AbstractConnection connection, IdentifyPayloadData data) async {
     connection.identifyTimeout?.cancel();
 
     final (
       bool authenticationSucceed,
-      UserConfig? user,
-      GroupConfig? group,
-    ) = _performAuthentication(connection, data);
+      User? user,
+      Group? group,
+    ) = await _performAuthentication(connection, data);
 
     if (connection.identified) return connection.close(CloseEventData.AlreadyAuthenticated);
     if (!authenticationSucceed) return connection.close(CloseEventData.AuthenticationFailed);
@@ -37,22 +36,20 @@ class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
     );
   }
 
-  (bool, UserConfig?, GroupConfig?) _performAuthentication(AbstractConnection connection, IdentifyPayloadData data) {
+  Future<(bool, User?, Group?)> _performAuthentication(AbstractConnection connection, IdentifyPayloadData data) async {
     try {
-      UserConfig user = connection.application.config.security.users.firstWhere(
-        (user) => user.credentials.login == data.login,
+      UserFluent<User?> userFluent = connection.application.prisma.user.findUnique(
+        where: UserWhereUniqueInput(name: data.login),
       );
-
-      GroupConfig group = connection.application.config.security.groups.firstWhere(
-        (group) => group.name == user.group,
-      );
+      User? user = await userFluent;
+      Group? group = await userFluent.group();
 
       return (
-        user.credentials.passwordHash == null
+        user?.passwordHash == null
             ? group.allowLoginIfNoPasswordSet
             : BCrypt.checkpw(
                 data.password!,
-                user.credentials.passwordHash!,
+                user!.passwordHash!,
               ),
         user,
         group,

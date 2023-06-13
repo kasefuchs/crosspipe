@@ -5,7 +5,7 @@ import 'package:yaml/yaml.dart';
 
 import '../../utility/yaml.dart';
 import 'logger/logger.dart';
-import 'security/security.dart';
+import 'security.dart';
 import 'server/server.dart';
 
 part 'application.freezed.dart';
@@ -15,6 +15,7 @@ part 'application.g.dart';
 class ApplicationConfig with _$ApplicationConfig {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ApplicationConfig({
+    required String databaseUrl,
     required LoggerConfig logger,
     required SecurityConfig security,
     required ServerConfig server,

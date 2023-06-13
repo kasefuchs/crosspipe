@@ -3,6 +3,7 @@ import '../model/config/application.dart';
 import 'connection/abstract.dart';
 import 'http/server.dart';
 import 'logger/logger.dart';
+import 'prisma/client.dart';
 
 class Application {
   final Map<String, AbstractConnection> connections = Map<String, AbstractConnection>();
@@ -15,13 +16,16 @@ class Application {
 
   late final WebSocketHandler wsHandler;
 
+  late final PrismaClient prisma;
+
   Application(this.config) {
+    prisma = PrismaClient(datasources: Datasources(db: config.databaseUrl));
     log = Logger(this);
     http = HttpServer(this);
     wsHandler = WebSocketHandler(this);
   }
 
-  void start() {
+  Future<void> start() async {
     http
       ..registerRoutes({
         '/': wsHandler.handleRequest,

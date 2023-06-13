@@ -1,5 +1,6 @@
 #file: noinspection SpellCheckingInspection
 ---
+database_url: postgresql://postgres:password@localhost:5432/prisma_test?sslmode=disable
 logger:
   type: stdout
   level: trace
@@ -39,28 +40,9 @@ logger:
       foreground: 1282a2
 
 security:
-  authentication:
-    heartbeat_timeout: 45000
-    identify_timeout: 30000
-    session_id_length: 8
-
-  groups:
-    - name: anonymous
-      permissions:
-        - BROADCAST_MESSAGE
-        - BROADCAST_EXECUTE
-      allow_login_if_no_password_set: true
-    - name: admin
-
-  users:
-    - credentials:
-        login: Kasefuchs
-        password_hash: $2a$12$m2Z9Yc/gJB9SlKIm/.5EoOialqf.iYvZyRx52d7YuTkHeesUW5nwq
-      group: admin
-
-    - credentials:
-        login: anonymous
-      group: anonymous
+  heartbeat_timeout: 45000
+  identify_timeout: 30000
+  session_id_length: 8
 
 server:
   http:

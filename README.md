@@ -44,7 +44,9 @@ $ git clone <Insert URL> crosspipe-server
 $ cd crosspipe-server
 # Install dependencies
 $ dart pub get
+$ yarn
 # Generate schemas
+$ yarn run prisma generate
 $ dart run build_runner build
 # Build executable
 $ dart compile exe ./bin/crosspipe.dart
@@ -54,6 +56,12 @@ $ dart compile exe ./bin/crosspipe.dart
 
 ### Config
 First of all, you need a configuration file, [an example can be found in the repository](./config.example.yaml)
+
+### Database
+After you have written the configuration file, you should apply migrations to your database with command below:
+```shell
+$ yarn run prisma db push --skip-generate
+```
 
 ### Start server
 After you have written the configuration file, you can start the server by specifying path to the configuration file in arguments.
@@ -65,6 +73,7 @@ $ crosspipe start -c ./config.yaml
 ## 🧰 Built Using <a name = "built_using"></a>
 
 - [Dart SDK](https://dart.dev/) - Programming language and great SDK!
+- [Prisma](https://prisma.io) - Cool ORM
 
 ## 🤝 Acknowledgements <a name = "acknowledgement"></a>
 

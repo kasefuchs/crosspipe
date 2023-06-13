@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:crosspipe/crosspipe.dart';
-
 import 'abstract.dart';
 
 class StartCommand extends AbstractCommand {
@@ -9,11 +5,5 @@ class StartCommand extends AbstractCommand {
   final String description = 'Starts the server';
 
   @override
-  void run() {
-    File configFile = File(argResults!['config']);
-
-    ApplicationConfig applicationConfig = ApplicationConfig.fromFile(configFile);
-
-    Application(applicationConfig).start();
-  }
+  Future<void> execute() => application.start();
 }
