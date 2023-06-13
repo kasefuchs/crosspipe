@@ -8,16 +8,16 @@ class GroupDeleteCommand extends AbstractGroupCommand {
 
   GroupDeleteCommand() {
     argParser
-      ..addOption("id")
-      ..addOption("name");
+      ..addOption('id')
+      ..addOption('name');
   }
 
   @override
   Future<void> execute() async {
     await application.prisma.group.delete(
       where: GroupWhereUniqueInput(
-        name: argResults?["name"],
-        id: argResults?["id"],
+        name: argResults?['name'],
+        id: argResults?['id'],
       ),
     );
   }

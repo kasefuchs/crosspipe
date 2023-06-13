@@ -19,7 +19,7 @@ class GroupCreateCommand extends AbstractGroupCommand {
 
   @override
   Future<void> execute() async {
-    List<String> rawPermissions = argResults!["permission"]!;
+    List<String> rawPermissions = argResults!['permission']!;
     Iterable<GroupPermission> permissions = rawPermissions.map(
       (String permissionName) => GroupPermission.values.firstWhere(
         (permission) => permission.originalName == permissionName,
@@ -28,9 +28,9 @@ class GroupCreateCommand extends AbstractGroupCommand {
 
     Group group = await application.prisma.group.create(
       data: GroupCreateInput(
-        name: argResults!["name"],
+        name: argResults!['name'],
         permissions: permissions,
-        allowLoginIfNoPasswordSet: argResults!["allow_login_if_no_password_set"],
+        allowLoginIfNoPasswordSet: argResults!['allow_login_if_no_password_set'],
       ),
     );
 

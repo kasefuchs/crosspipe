@@ -5,10 +5,10 @@ import '../../table.dart';
 abstract class AbstractUserCommand extends AbstractTableCommand<User> {
   AbstractUserCommand() {
     table
-      ..insertColumn(header: "ID")
-      ..insertColumn(header: "Username")
-      ..insertColumn(header: "Group ID")
-      ..insertColumn(header: "Password hash");
+      ..insertColumn(header: 'ID')
+      ..insertColumn(header: 'Username')
+      ..insertColumn(header: 'Group ID')
+      ..insertColumn(header: 'Password hash');
   }
 
   @override

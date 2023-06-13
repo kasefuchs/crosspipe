@@ -16,11 +16,11 @@ class UserCreateCommand extends AbstractUserCommand {
 
   (String, String, String?) get credentials {
     String salt = BCrypt.gensalt();
-    String? password = argResults?["password"];
+    String? password = argResults?['password'];
 
     return (
-      argResults!["username"],
-      argResults!["group"],
+      argResults!['username'],
+      argResults!['group'],
       password != null
           ? BCrypt.hashpw(
               password,

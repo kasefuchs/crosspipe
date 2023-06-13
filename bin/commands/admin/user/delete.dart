@@ -8,8 +8,8 @@ class UserDeleteCommand extends AbstractUserCommand {
 
   UserDeleteCommand() {
     argParser
-      ..addOption("id")
-      ..addOption("username");
+      ..addOption('id')
+      ..addOption('username');
   }
 
   @override
@@ -17,8 +17,8 @@ class UserDeleteCommand extends AbstractUserCommand {
 
     await application.prisma.user.delete(
       where: UserWhereUniqueInput(
-        name: argResults?["username"],
-        id: argResults?["id"],
+        name: argResults?['username'],
+        id: argResults?['id'],
       ),
     );
   }
