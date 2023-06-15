@@ -1,19 +1,28 @@
 FROM dart:stable AS build
 
-WORKDIR /app
-COPY pubspec.* ./
-RUN dart pub get
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs make
 
+# Copy sources
+WORKDIR /app
 COPY . .
-RUN dart pub get --offline
-RUN dart run build_runner build --delete-conflicting-outputs
-RUN dart compile exe bin/crosspipe.dart -o bin/crosspipe
+
+# Install depedencies
+RUN dart pub get
+RUN npm install
+
+# Generate schemas
+RUN make generate-schemas
+
+# Compile binary
+RUN make build-binary
 
 FROM scratch
 
-WORKDIR /app
+WORKDIR /bin
 
 COPY --from=build /runtime/ /
-COPY --from=build /app/bin/crosspipe .
+COPY --from=build /app/build/crosspipe .
 
-CMD ["/app/crosspipe", "start", "-c", "/app/config.yaml"]
+CMD ["crosspipe", "start", "-c", "/app/config.yaml"]

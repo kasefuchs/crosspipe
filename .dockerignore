@@ -1,0 +1,8 @@
+node_modules/
+*.g.dart
+*.freezed.dart
+config*.yaml
+.dart_tool/
+.env
+*.md
+.idea/
