@@ -12,5 +12,6 @@ class ServerConfig with _$ServerConfig {
     required HttpServerConfig http,
   }) = _ServerConfig;
 
-  factory ServerConfig.fromJson(Map<String, dynamic> json) => _$ServerConfigFromJson(json);
+  factory ServerConfig.fromJson(Map<String, dynamic> json) =>
+      _$ServerConfigFromJson(json);
 }

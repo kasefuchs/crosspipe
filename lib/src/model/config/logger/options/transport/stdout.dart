@@ -10,7 +10,9 @@ part 'stdout.freezed.dart';
 part 'stdout.g.dart';
 
 @freezed
-class StdoutLoggerTransportOptions with _$StdoutLoggerTransportOptions implements AbstractLoggerTransportOptions {
+class StdoutLoggerTransportOptions
+    with _$StdoutLoggerTransportOptions
+    implements AbstractLoggerTransportOptions {
   const StdoutLoggerTransportOptions._();
 
   @JsonSerializable(fieldRename: FieldRename.snake)
@@ -25,5 +27,6 @@ class StdoutLoggerTransportOptions with _$StdoutLoggerTransportOptions implement
       _$StdoutLoggerTransportOptionsFromJson(json);
 
   @override
-  AbstractLoggerTransport get(Application application) => StdoutLoggerTransport(application);
+  AbstractLoggerTransport get(Application application) =>
+      StdoutLoggerTransport(application);
 }

@@ -12,5 +12,6 @@ class EmbedField with _$EmbedField {
     bool? inline,
   }) = _EmbedField;
 
-  factory EmbedField.fromJson(Map<String, dynamic> json) => _$EmbedFieldFromJson(json);
+  factory EmbedField.fromJson(Map<String, dynamic> json) =>
+      _$EmbedFieldFromJson(json);
 }

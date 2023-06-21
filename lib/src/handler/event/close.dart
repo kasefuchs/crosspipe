@@ -11,7 +11,8 @@ class OnCloseHandler {
 
   void _logConnectionClose(AbstractConnection connection) {
     CloseEventData closeData = connection.closeData;
-    connection.log.info('Connection closed with ${closeData} (code: ${closeData.code}, fatal: ${closeData.fatal})');
+    connection.log.info(
+        'Connection closed with ${closeData} (code: ${closeData.code}, fatal: ${closeData.fatal})');
   }
 
   void _removeConnectionIfFatal(AbstractConnection connection) {

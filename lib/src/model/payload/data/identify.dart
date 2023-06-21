@@ -6,7 +6,9 @@ part 'identify.freezed.dart';
 part 'identify.g.dart';
 
 @freezed
-class IdentifyPayloadData with _$IdentifyPayloadData implements AbstractPayloadData {
+class IdentifyPayloadData
+    with _$IdentifyPayloadData
+    implements AbstractPayloadData {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory IdentifyPayloadData({
     required String login,
@@ -14,5 +16,6 @@ class IdentifyPayloadData with _$IdentifyPayloadData implements AbstractPayloadD
     Set<String>? feeds,
   }) = _IdentifyPayloadData;
 
-  factory IdentifyPayloadData.fromJson(Map<String, dynamic> json) => _$IdentifyPayloadDataFromJson(json);
+  factory IdentifyPayloadData.fromJson(Map<String, dynamic> json) =>
+      _$IdentifyPayloadDataFromJson(json);
 }

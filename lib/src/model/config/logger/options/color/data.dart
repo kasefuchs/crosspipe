@@ -19,7 +19,10 @@ class ColorData {
 
   double get blueIntensity => blue / _maxValue;
 
-  int get hexColor => ((red & _maxValue) << 16) + ((green & _maxValue) << 8) + (blue & _maxValue);
+  int get hexColor =>
+      ((red & _maxValue) << 16) +
+      ((green & _maxValue) << 8) +
+      (blue & _maxValue);
 
   ColorData invert() => ColorData(
         red: _maxValue - red,

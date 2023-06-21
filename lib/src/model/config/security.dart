@@ -14,5 +14,6 @@ class SecurityConfig with _$SecurityConfig {
     @Default(16) int sessionIdLength,
   }) = _SecurityConfig;
 
-  factory SecurityConfig.fromJson(Map<String, dynamic> json) => _$SecurityConfigFromJson(json);
+  factory SecurityConfig.fromJson(Map<String, dynamic> json) =>
+      _$SecurityConfigFromJson(json);
 }

@@ -7,7 +7,8 @@ import '../../../model/config/logger/options/transport/file.dart';
 import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
-class FileLoggerTransport extends AbstractLoggerTransport<FileLoggerTransportOptions> {
+class FileLoggerTransport
+    extends AbstractLoggerTransport<FileLoggerTransportOptions> {
   Queue<LogRecord> _queuedLogRecords = Queue<LogRecord>();
 
   FileLoggerTransport(super.application) {

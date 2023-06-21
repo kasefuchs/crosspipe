@@ -16,7 +16,8 @@ class LoggerConfig with _$LoggerConfig {
   ) = _LoggerConfig;
 
   factory LoggerConfig.fromJson(Map<String, dynamic> json) {
-    LoggerTransportType transport = $enumDecode(_$LoggerTransportTypeEnumMap, json['type']);
+    LoggerTransportType transport =
+        $enumDecode(_$LoggerTransportTypeEnumMap, json['type']);
     LogLevel level = $enumDecode(_$LogLevelEnumMap, json['level']);
 
     return LoggerConfig(

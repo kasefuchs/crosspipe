@@ -9,7 +9,8 @@ import 'stdout.dart';
 abstract class AbstractLoggerTransportOptions {
   AbstractLoggerTransportOptions();
 
-  factory AbstractLoggerTransportOptions.fromJson(Map<String, dynamic> json, LoggerTransportType type) {
+  factory AbstractLoggerTransportOptions.fromJson(
+      Map<String, dynamic> json, LoggerTransportType type) {
     switch (type) {
       case LoggerTransportType.DiscordWebhook:
         return DiscordWebhookLoggerTransportOptions.fromJson(json);

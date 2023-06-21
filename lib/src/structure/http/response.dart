@@ -12,7 +12,8 @@ extension BetterHttpResponse on HttpResponse {
     String serializedJson = jsonEncode(json);
 
     Map<String, String> contentHeaders = Map<String, String>.from(headers ?? {})
-      ..putIfAbsent(HttpHeaders.contentTypeHeader, () => ContentType.json.mimeType);
+      ..putIfAbsent(
+          HttpHeaders.contentTypeHeader, () => ContentType.json.mimeType);
 
     return send(
       serializedJson,

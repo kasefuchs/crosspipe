@@ -23,7 +23,8 @@ abstract class AbstractCommand extends Command {
   Application _createApplication() {
     File configFile = File(argResults!['config']);
 
-    ApplicationConfig applicationConfig = ApplicationConfig.fromFile(configFile);
+    ApplicationConfig applicationConfig =
+        ApplicationConfig.fromFile(configFile);
 
     return _currentApplication = Application(applicationConfig);
   }

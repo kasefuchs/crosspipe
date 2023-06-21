@@ -35,15 +35,21 @@ class Logger {
 
   Logger child(String tag) => Logger(application, tags: [..._tags, tag]);
 
-  void debug(String message, [Object? object]) => call(LogLevel.Debug, message, object);
+  void debug(String message, [Object? object]) =>
+      call(LogLevel.Debug, message, object);
 
-  void error(String message, [Object? object]) => call(LogLevel.Error, message, object);
+  void error(String message, [Object? object]) =>
+      call(LogLevel.Error, message, object);
 
-  void fatal(String message, [Object? object]) => call(LogLevel.Fatal, message, object);
+  void fatal(String message, [Object? object]) =>
+      call(LogLevel.Fatal, message, object);
 
-  void info(String message, [Object? object]) => call(LogLevel.Info, message, object);
+  void info(String message, [Object? object]) =>
+      call(LogLevel.Info, message, object);
 
-  void trace(String message, [Object? object]) => call(LogLevel.Trace, message, object);
+  void trace(String message, [Object? object]) =>
+      call(LogLevel.Trace, message, object);
 
-  void warn(String message, [Object? object]) => call(LogLevel.Warn, message, object);
+  void warn(String message, [Object? object]) =>
+      call(LogLevel.Warn, message, object);
 }

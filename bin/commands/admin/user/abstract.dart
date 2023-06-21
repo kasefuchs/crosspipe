@@ -13,9 +13,9 @@ abstract class AbstractUserCommand extends AbstractTableCommand<User> {
 
   @override
   List<Object> modelToRow(User model) => [
-    model.id,
-    model.name,
-    model.groupId,
-    model.passwordHash.toString(),
-  ];
+        model.id,
+        model.name,
+        model.groupId,
+        model.passwordHash.toString(),
+      ];
 }

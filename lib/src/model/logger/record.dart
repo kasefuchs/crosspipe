@@ -18,5 +18,6 @@ class LogRecord with _$LogRecord {
     Object? object,
   }) = _LogRecord;
 
-  factory LogRecord.fromJson(Map<String, dynamic> json) => _$LogRecordFromJson(json);
+  factory LogRecord.fromJson(Map<String, dynamic> json) =>
+      _$LogRecordFromJson(json);
 }

@@ -39,7 +39,8 @@ class OnDataHandler {
   void _handlePayload(AbstractConnection connection, RootPayload payload) {
     PayloadHandler? handler = _payloadHandlers[payload.type];
 
-    connection.log.debug('Received "${payload.type.name}" payload, with data:', payload.toJson());
+    connection.log.debug('Received "${payload.type.name}" payload, with data:',
+        payload.toJson());
 
     if (_isUserUnauthenticatedForPayloadType(connection, payload)) {
       connection.close(CloseEventData.NotAuthenticated);
@@ -51,11 +52,15 @@ class OnDataHandler {
     }
   }
 
-  bool _isUserUnauthenticatedForPayloadType(AbstractConnection connection, RootPayload payload) =>
-      connection.user == null && !_unauthenticatedAllowedHandlerTypes.contains(payload.type);
+  bool _isUserUnauthenticatedForPayloadType(
+          AbstractConnection connection, RootPayload payload) =>
+      connection.user == null &&
+      !_unauthenticatedAllowedHandlerTypes.contains(payload.type);
 
-  void _handleUnknownError(AbstractConnection connection, Object error, StackTrace trace) {
-    connection.log.error('Unknown error: ${error.runtimeType} ${error}', trace.toString());
+  void _handleUnknownError(
+      AbstractConnection connection, Object error, StackTrace trace) {
+    connection.log.error(
+        'Unknown error: ${error.runtimeType} ${error}', trace.toString());
     connection.close(CloseEventData.UnknownError);
   }
 }

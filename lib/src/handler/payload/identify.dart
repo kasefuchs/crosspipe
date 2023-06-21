@@ -19,8 +19,10 @@ class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
       Group? group,
     ) = await _performAuthentication(connection, data);
 
-    if (connection.identified) return connection.close(CloseEventData.AlreadyAuthenticated);
-    if (!authenticationSucceed) return connection.close(CloseEventData.AuthenticationFailed);
+    if (connection.identified)
+      return connection.close(CloseEventData.AlreadyAuthenticated);
+    if (!authenticationSucceed)
+      return connection.close(CloseEventData.AuthenticationFailed);
 
     connection
       ..identified = true
@@ -36,9 +38,11 @@ class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
     );
   }
 
-  Future<(bool, User?, Group?)> _performAuthentication(AbstractConnection connection, IdentifyPayloadData data) async {
+  Future<(bool, User?, Group?)> _performAuthentication(
+      AbstractConnection connection, IdentifyPayloadData data) async {
     try {
-      UserFluent<User?> userFluent = connection.application.prisma.user.findUnique(
+      UserFluent<User?> userFluent =
+          connection.application.prisma.user.findUnique(
         where: UserWhereUniqueInput(name: data.login),
       );
       User? user = await userFluent;
@@ -57,7 +61,9 @@ class IdentifyHandler with PayloadHandler<IdentifyPayloadData> {
     } on TypeError {
       // Simply ignore
     } catch (error) {
-      connection.log.error('An error occurred during authorization: ${error.runtimeType} ', error);
+      connection.log.error(
+          'An error occurred during authorization: ${error.runtimeType} ',
+          error);
     }
 
     return (false, null, null);

@@ -12,5 +12,6 @@ class ReadyPayloadData with _$ReadyPayloadData implements AbstractPayloadData {
     required String sessionId,
   }) = _ReadyPayloadData;
 
-  factory ReadyPayloadData.fromJson(Map<String, dynamic> json) => _$ReadyPayloadDataFromJson(json);
+  factory ReadyPayloadData.fromJson(Map<String, dynamic> json) =>
+      _$ReadyPayloadDataFromJson(json);
 }

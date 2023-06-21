@@ -11,5 +11,6 @@ class HttpServerConfig with _$HttpServerConfig {
     @Default(8080) int port,
   }) = _HttpServerConfig;
 
-  factory HttpServerConfig.fromJson(Map<String, dynamic> json) => _$HttpServerConfigFromJson(json);
+  factory HttpServerConfig.fromJson(Map<String, dynamic> json) =>
+      _$HttpServerConfigFromJson(json);
 }

@@ -14,10 +14,13 @@ class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
 
   @override
   void call(AbstractConnection connection, BroadcastRootPayload payload) {
-    connection.log.debug('Received "${payload.type.name}" broadcast payload with data:', payload.data.toJson());
+    connection.log.debug(
+        'Received "${payload.type.name}" broadcast payload with data:',
+        payload.data.toJson());
 
     GroupPermission? requiredPermission = _permissions[payload.type];
-    bool hasAccess = connection.group!.permissions!.contains(requiredPermission);
+    bool hasAccess =
+        connection.group!.permissions!.contains(requiredPermission);
 
     if (!hasAccess) return connection.close(CloseEventData.AccessDenied);
 
@@ -37,13 +40,18 @@ class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
     });
   }
 
-  Iterable<AbstractConnection> _fetchRecipients(AbstractConnection connection, Iterable<String> recipients) {
-    Iterable<AbstractConnection> allConnections = connection.application.connections.values;
+  Iterable<AbstractConnection> _fetchRecipients(
+      AbstractConnection connection, Iterable<String> recipients) {
+    Iterable<AbstractConnection> allConnections =
+        connection.application.connections.values;
 
-    return recipients.expand((recipient) => _recipientFilter(allConnections, recipient)).toSet();
+    return recipients
+        .expand((recipient) => _recipientFilter(allConnections, recipient))
+        .toSet();
   }
 
-  Iterable<AbstractConnection> _recipientFilter(Iterable<AbstractConnection> connections, String recipient) {
+  Iterable<AbstractConnection> _recipientFilter(
+      Iterable<AbstractConnection> connections, String recipient) {
     List<String> recipientSplit = recipient.split(':');
 
     switch (recipientSplit.length) {
@@ -57,13 +65,17 @@ class BroadcastHandler with PayloadHandler<BroadcastRootPayload> {
 
         switch (type) {
           case 'session':
-            return connections.where((connection) => connection.sessionId == value);
+            return connections
+                .where((connection) => connection.sessionId == value);
           case 'user':
-            return connections.where((connection) => connection.user?.name == value);
+            return connections
+                .where((connection) => connection.user?.name == value);
           case 'group':
-            return connections.where((connection) => connection.group?.name == value);
+            return connections
+                .where((connection) => connection.group?.name == value);
           case 'feed':
-            return connections.where((connection) => connection.feeds?.contains(value) == true);
+            return connections.where(
+                (connection) => connection.feeds?.contains(value) == true);
         }
     }
 

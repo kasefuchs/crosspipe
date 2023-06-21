@@ -27,9 +27,11 @@ class DiscordWebhookLoggerTransportOptions
     String? username,
   }) = _DiscordWebhookLoggerTransportOptions;
 
-  factory DiscordWebhookLoggerTransportOptions.fromJson(Map<String, dynamic> json) =>
+  factory DiscordWebhookLoggerTransportOptions.fromJson(
+          Map<String, dynamic> json) =>
       _$DiscordWebhookLoggerTransportOptionsFromJson(json);
 
   @override
-  AbstractLoggerTransport get(Application application) => DiscordWebhookLoggerTransport(application);
+  AbstractLoggerTransport get(Application application) =>
+      DiscordWebhookLoggerTransport(application);
 }

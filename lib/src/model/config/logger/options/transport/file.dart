@@ -13,7 +13,9 @@ part 'file.freezed.dart';
 part 'file.g.dart';
 
 @freezed
-class FileLoggerTransportOptions with _$FileLoggerTransportOptions implements AbstractLoggerTransportOptions {
+class FileLoggerTransportOptions
+    with _$FileLoggerTransportOptions
+    implements AbstractLoggerTransportOptions {
   const FileLoggerTransportOptions._();
 
   @JsonSerializable(fieldRename: FieldRename.snake)
@@ -22,8 +24,10 @@ class FileLoggerTransportOptions with _$FileLoggerTransportOptions implements Ab
     @DurationConverter() required Duration flushInterval,
   }) = _FileLoggerTransportOptions;
 
-  factory FileLoggerTransportOptions.fromJson(Map<String, dynamic> json) => _$FileLoggerTransportOptionsFromJson(json);
+  factory FileLoggerTransportOptions.fromJson(Map<String, dynamic> json) =>
+      _$FileLoggerTransportOptionsFromJson(json);
 
   @override
-  AbstractLoggerTransport get(Application application) => FileLoggerTransport(application);
+  AbstractLoggerTransport get(Application application) =>
+      FileLoggerTransport(application);
 }

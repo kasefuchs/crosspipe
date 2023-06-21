@@ -6,7 +6,8 @@ import 'logger/logger.dart';
 import 'prisma/client.dart';
 
 class Application {
-  final Map<String, AbstractConnection> connections = Map<String, AbstractConnection>();
+  final Map<String, AbstractConnection> connections =
+      Map<String, AbstractConnection>();
 
   final ApplicationConfig config;
 

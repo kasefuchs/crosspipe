@@ -14,5 +14,6 @@ class HelloPayloadData with _$HelloPayloadData implements AbstractPayloadData {
     @DurationConverter() required Duration identifyTimeout,
   }) = _HelloPayloadData;
 
-  factory HelloPayloadData.fromJson(Map<String, dynamic> json) => _$HelloPayloadDataFromJson(json);
+  factory HelloPayloadData.fromJson(Map<String, dynamic> json) =>
+      _$HelloPayloadDataFromJson(json);
 }

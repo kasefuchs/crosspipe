@@ -13,7 +13,8 @@ import 'embed/field.dart';
 import 'embed/footer.dart';
 import 'message.dart';
 
-class DiscordWebhookLoggerTransport extends AbstractLoggerTransport<DiscordWebhookLoggerTransportOptions> {
+class DiscordWebhookLoggerTransport
+    extends AbstractLoggerTransport<DiscordWebhookLoggerTransportOptions> {
   Queue<LogRecord> _queuedLogRecords = Queue<LogRecord>();
 
   DiscordWebhookLoggerTransport(super.application) {
@@ -26,7 +27,8 @@ class DiscordWebhookLoggerTransport extends AbstractLoggerTransport<DiscordWebho
   @override
   void push(LogRecord record) => _queuedLogRecords.addLast(record);
 
-  List<LogRecord> _removeQueueCount(Queue<LogRecord> queue, int count) => List.generate(
+  List<LogRecord> _removeQueueCount(Queue<LogRecord> queue, int count) =>
+      List.generate(
         count > queue.length ? queue.length : count,
         (_) => queue.removeFirst(),
       );
@@ -37,7 +39,8 @@ class DiscordWebhookLoggerTransport extends AbstractLoggerTransport<DiscordWebho
         color: options.colors.getLevel(record.level).background,
         timestamp: record.time,
         footer: EmbedFooter(
-          text: '${record.tags.isNotEmpty ? record.tags.join(' > ') + ' • ' : ''}PID: ${record.pid}',
+          text:
+              '${record.tags.isNotEmpty ? record.tags.join(' > ') + ' • ' : ''}PID: ${record.pid}',
         ),
         fields: record.object != null
             ? [
@@ -51,7 +54,9 @@ class DiscordWebhookLoggerTransport extends AbstractLoggerTransport<DiscordWebho
 
   void _flush() {
     if (_queuedLogRecords.isNotEmpty) {
-      List<Embed> embeds = _removeQueueCount(_queuedLogRecords, 10).map(_createEmbedForLogRecord).toList();
+      List<Embed> embeds = _removeQueueCount(_queuedLogRecords, 10)
+          .map(_createEmbedForLogRecord)
+          .toList();
 
       Map payloadBody = Message(
         avatarUrl: options.avatarUrl,

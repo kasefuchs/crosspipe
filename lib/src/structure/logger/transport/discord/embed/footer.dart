@@ -14,5 +14,6 @@ class EmbedFooter with _$EmbedFooter {
     @UriConverter() Uri? proxyIconUrl,
   }) = _EmbedFooter;
 
-  factory EmbedFooter.fromJson(Map<String, dynamic> json) => _$EmbedFooterFromJson(json);
+  factory EmbedFooter.fromJson(Map<String, dynamic> json) =>
+      _$EmbedFooterFromJson(json);
 }

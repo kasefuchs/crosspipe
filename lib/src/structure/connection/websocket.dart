@@ -9,10 +9,12 @@ import '../application.dart';
 import 'abstract.dart';
 
 class WebSocketConnection extends AbstractConnection<WebSocket> {
-  WebSocketConnection(Application application, WebSocket socket) : super(application, socket);
+  WebSocketConnection(Application application, WebSocket socket)
+      : super(application, socket);
 
   @override
-  CloseEventData get closeData => CloseEventData.whereCode(socket.closeCode ?? -1);
+  CloseEventData get closeData =>
+      CloseEventData.whereCode(socket.closeCode ?? -1);
 
   @override
   void send(PayloadType type, [AbstractPayloadData? data]) {

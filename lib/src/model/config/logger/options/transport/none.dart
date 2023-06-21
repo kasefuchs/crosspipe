@@ -7,7 +7,8 @@ class NoneLoggerTransportOptions implements AbstractLoggerTransportOptions {
   NoneLoggerTransportOptions();
 
   @override
-  AbstractLoggerTransport get(Application application) => NoneLoggerTransport(application);
+  AbstractLoggerTransport get(Application application) =>
+      NoneLoggerTransport(application);
 
   @override
   Map toJson() => {};

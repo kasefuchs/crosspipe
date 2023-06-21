@@ -21,7 +21,8 @@ class ApplicationConfig with _$ApplicationConfig {
     required ServerConfig server,
   }) = _ApplicationConfig;
 
-  factory ApplicationConfig.fromJson(Map<String, dynamic> json) => _$ApplicationConfigFromJson(json);
+  factory ApplicationConfig.fromJson(Map<String, dynamic> json) =>
+      _$ApplicationConfigFromJson(json);
 
   factory ApplicationConfig.fromFile(File file) {
     String content = file.readAsStringSync();

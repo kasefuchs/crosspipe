@@ -9,7 +9,8 @@ class OnConnectHandler {
     connection.send(
       PayloadType.Hello,
       HelloPayloadData(
-        heartbeatTimeout: connection.application.config.security.heartbeatTimeout,
+        heartbeatTimeout:
+            connection.application.config.security.heartbeatTimeout,
         identifyTimeout: connection.application.config.security.identifyTimeout,
       ),
     );

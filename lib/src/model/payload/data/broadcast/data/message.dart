@@ -6,7 +6,9 @@ part 'message.freezed.dart';
 part 'message.g.dart';
 
 @freezed
-class BroadcastMessagePayloadData with _$BroadcastMessagePayloadData implements AbstractBroadcastPayloadData {
+class BroadcastMessagePayloadData
+    with _$BroadcastMessagePayloadData
+    implements AbstractBroadcastPayloadData {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory BroadcastMessagePayloadData({
     required Set<String> recipients,

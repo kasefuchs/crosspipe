@@ -9,13 +9,16 @@ import '../../../model/config/logger/options/transport/stdout.dart';
 import '../../../model/logger/record.dart';
 import 'abstract.dart';
 
-class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTransportOptions> {
+class StdoutLoggerTransport
+    extends AbstractLoggerTransport<StdoutLoggerTransportOptions> {
   StdoutLoggerTransport(super.application);
 
   @override
   void push(LogRecord record) {
     print(
-      options.pretty ? _createPrettyMessage(record) : jsonEncode(record.toJson()),
+      options.pretty
+          ? _createPrettyMessage(record)
+          : jsonEncode(record.toJson()),
     );
   }
 
@@ -25,7 +28,8 @@ class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTranspor
     Color? nextColor,
   ]) {
     AnsiPen body = BetterAnsiPen.fromColor(currentColor);
-    AnsiPen end = BetterAnsiPen.fromColorsData(background: nextColor?.background, foreground: currentColor.background);
+    AnsiPen end = BetterAnsiPen.fromColorsData(
+        background: nextColor?.background, foreground: currentColor.background);
 
     return body(' ${content} ') + end('\uE0B0');
   }
@@ -37,8 +41,10 @@ class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTranspor
     late String output;
 
     if (!options.styled) {
-      String tagsList = record.tags.isNotEmpty ? '<${record.tags.join(', ')}>' : '';
-      output = '[$formattedDate] $upperLevel $tagsList (${record.pid}): ${record.message}';
+      String tagsList =
+          record.tags.isNotEmpty ? '<${record.tags.join(', ')}>' : '';
+      output =
+          '[$formattedDate] $upperLevel $tagsList (${record.pid}): ${record.message}';
       if (record.object != null) output += ' ${record.object.toString()}';
     } else {
       Color levelColor = options.colors.getLevel(record.level);
@@ -49,21 +55,29 @@ class StdoutLoggerTransport extends AbstractLoggerTransport<StdoutLoggerTranspor
       Color objectColor = options.colors.getKey('object');
 
       String formattedTime = _createBlock(formattedDate, timeColor, pidColor);
-      String formattedPid = _createBlock(record.pid.toString(), pidColor, levelColor);
-      String formattedLevel = _createBlock(upperLevel, levelColor, record.tags.isNotEmpty ? tagsColor : null);
-      String formattedTags = record.tags.isNotEmpty ? _createBlock((record.tags.join(' \u2771 ')), tagsColor) : '';
+      String formattedPid =
+          _createBlock(record.pid.toString(), pidColor, levelColor);
+      String formattedLevel = _createBlock(
+          upperLevel, levelColor, record.tags.isNotEmpty ? tagsColor : null);
+      String formattedTags = record.tags.isNotEmpty
+          ? _createBlock((record.tags.join(' \u2771 ')), tagsColor)
+          : '';
 
-      String formattedMessage = BetterAnsiPen.fromColor(messageColor)(record.message);
+      String formattedMessage =
+          BetterAnsiPen.fromColor(messageColor)(record.message);
 
-      output = '$formattedTime$formattedPid$formattedLevel$formattedTags $formattedMessage';
+      output =
+          '$formattedTime$formattedPid$formattedLevel$formattedTags $formattedMessage';
 
       if (record.object != null) {
-        String formattedObject = BetterAnsiPen.fromColor(objectColor)(record.object.toString());
+        String formattedObject =
+            BetterAnsiPen.fromColor(objectColor)(record.object.toString());
         output += ' $formattedObject';
       }
     }
     return output;
   }
 
-  String _getFormattedDate(DateTime time) => DateFormat(options.timeFormat).format(time);
+  String _getFormattedDate(DateTime time) =>
+      DateFormat(options.timeFormat).format(time);
 }

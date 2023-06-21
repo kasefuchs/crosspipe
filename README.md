@@ -24,9 +24,17 @@
 
 ## 🧐 About <a name = "about"></a>
 
-CrossPipe is an IPC server that focuses on efficient and reliable communication between processes in an operating system, with a particular emphasis on supporting web applications. It facilitates data and command transmission, making it valuable for web-based application development. CrossPipe offers dedicated APIs and protocols for seamless communication and data exchange between web applications and server processes. It ensures high performance, low latency, and secure data transmission, enabling smooth interactions between client-side and server-side components.
+CrossPipe is an IPC server that focuses on efficient and reliable communication between processes in an operating
+system, with a particular emphasis on supporting web applications. It facilitates data and command transmission, making
+it valuable for web-based application development. CrossPipe offers dedicated APIs and protocols for seamless
+communication and data exchange between web applications and server processes. It ensures high performance, low latency,
+and secure data transmission, enabling smooth interactions between client-side and server-side components.
 
-Developers can simplify web application development by leveraging CrossPipe for efficient coordination, data sharing, and synchronization between application components, ultimately improving performance and reliability. CrossPipe also eases the development of distributed computing systems, microservices architectures, and cloud-based applications, offering versatile inter-process communication capabilities tailored to the needs of web developers. Its efficient communication channels enhance functionality and user experience, making it a valuable tool in web development.
+Developers can simplify web application development by leveraging CrossPipe for efficient coordination, data sharing,
+and synchronization between application components, ultimately improving performance and reliability. CrossPipe also
+eases the development of distributed computing systems, microservices architectures, and cloud-based applications,
+offering versatile inter-process communication capabilities tailored to the needs of web developers. Its efficient
+communication channels enhance functionality and user experience, making it a valuable tool in web development.
 
 ## 💿 Installing <a name = "installing"></a>
 
@@ -55,16 +63,21 @@ $ dart compile exe ./bin/crosspipe.dart
 ## 🎈 Usage <a name="usage"></a>
 
 ### Config
+
 First of all, you need a configuration file, [an example can be found in the repository](./config.example.yaml)
 
 ### Database
+
 After you have written the configuration file, you should apply migrations to your database with command below:
+
 ```shell
 $ yarn run prisma db push --skip-generate
 ```
 
 ### Start server
-After you have written the configuration file, you can start the server by specifying path to the configuration file in arguments.
+
+After you have written the configuration file, you can start the server by specifying path to the configuration file in
+arguments.
 
 ```shell
 $ crosspipe start -c ./config.yaml

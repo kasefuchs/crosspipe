@@ -14,7 +14,6 @@ class UserDeleteCommand extends AbstractUserCommand {
 
   @override
   Future<void> execute() async {
-
     await application.prisma.user.delete(
       where: UserWhereUniqueInput(
         name: argResults?['username'],
