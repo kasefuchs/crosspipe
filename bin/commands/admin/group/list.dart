@@ -1,4 +1,4 @@
-import 'package:crosspipe/src/structure/prisma/client.dart';
+import 'package:crosspipe/crosspipe.dart';
 
 import 'abstract.dart';
 
@@ -7,7 +7,7 @@ class GroupListCommand extends AbstractGroupCommand {
   final String description = 'Lists all groups that exist';
 
   @override
-  Future<void>  execute() async {
+  Future<void> execute() async {
     Iterable<Group> groups = await application.prisma.group.findMany();
 
     print(

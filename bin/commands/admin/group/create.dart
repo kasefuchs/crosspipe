@@ -1,4 +1,4 @@
-import 'package:crosspipe/src/structure/prisma/client.dart';
+import 'package:crosspipe/crosspipe.dart';
 
 import 'abstract.dart';
 
@@ -11,7 +11,9 @@ class GroupCreateCommand extends AbstractGroupCommand {
       ..addOption('name', mandatory: true)
       ..addMultiOption(
         'permission',
-        allowed: GroupPermission.values.map((permission) => permission.originalName!),
+        allowed: GroupPermission.values.map(
+          (permission) => permission.originalName!,
+        ),
         abbr: 'p',
       )
       ..addFlag('allow_login_if_no_password_set', abbr: 'a');
@@ -30,7 +32,8 @@ class GroupCreateCommand extends AbstractGroupCommand {
       data: GroupCreateInput(
         name: argResults!['name'],
         permissions: permissions,
-        allowLoginIfNoPasswordSet: argResults!['allow_login_if_no_password_set'],
+        allowLoginIfNoPasswordSet:
+            argResults!['allow_login_if_no_password_set'],
       ),
     );
 

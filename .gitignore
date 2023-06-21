@@ -5,7 +5,6 @@
 .dart_tool/
 .packages
 build/**/*
-!build/.gitkeep
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
 
@@ -38,6 +37,10 @@ config.yaml
 # Generated
 *.g.dart
 *.freezed.dart
+lib/src/structure/prisma/*
 
 # Node
 node_modules/
+
+# Keep
+!**/.gitkeep

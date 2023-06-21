@@ -1,5 +1,5 @@
 import 'package:bcrypt/bcrypt.dart';
-import 'package:crosspipe/src/structure/prisma/client.dart';
+import 'package:crosspipe/crosspipe.dart';
 
 import 'abstract.dart';
 

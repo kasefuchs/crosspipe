@@ -13,12 +13,11 @@ void main(List<String> arguments) async {
     ..addCommand(StartCommand())
     ..addCommand(AdminCommand());
 
-  runner.run(arguments);
-  //    .catchError(
-  //  (error) {
-  //    if (error is! UsageException) throw error;
-  //    print(error);
-  //    exit(64);
-  //  },
-  //);
+  runner.run(arguments).catchError(
+    (error) {
+      if (error is! UsageException) throw error;
+      print(error);
+      exit(64);
+    },
+  );
 }

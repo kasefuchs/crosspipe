@@ -1,4 +1,4 @@
-import 'package:crosspipe/src/structure/prisma/client.dart';
+import 'package:crosspipe/crosspipe.dart';
 
 import '../../table.dart';
 
@@ -15,7 +15,9 @@ abstract class AbstractGroupCommand extends AbstractTableCommand<Group> {
   List<Object> modelToRow(model) => [
         model.id,
         model.name,
-        model.permissions!.map((permission) => permission.originalName).join(', '),
+        model.permissions!
+            .map((permission) => permission.originalName)
+            .join(', '),
         model.allowLoginIfNoPasswordSet,
       ];
 }
