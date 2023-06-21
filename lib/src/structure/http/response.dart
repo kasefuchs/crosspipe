@@ -27,8 +27,9 @@ extension BetterHttpResponse on HttpResponse {
     Map<String, String>? headers,
     int? status,
   }) {
+    headers?.forEach(this.headers.set);
+
     this
-      ..headers.forEach(this.headers.set)
       ..statusCode = status ?? HttpStatus.ok
       ..write(data);
 
