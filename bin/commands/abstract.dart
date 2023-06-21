@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:http/http.dart';
 import 'package:args/command_runner.dart';
 import 'package:crosspipe/crosspipe.dart';
 
@@ -34,7 +34,10 @@ abstract class AbstractCommand extends Command {
   @override
   Future<void> run() async {
     try {
+      await application.prisma.$connect();
       await execute();
+    } on ClientException catch (error, trace) {
+      application.log.child("Prisma").fatal(error.message, trace);
     } finally {
       await application.prisma.$disconnect();
     }

@@ -1,6 +1,5 @@
 #file: noinspection SpellCheckingInspection
 ---
-database_url: postgresql://postgres:password@localhost:5432/prisma_test?sslmode=disable
 logger:
   type: stdout
   level: trace
@@ -45,6 +44,7 @@ security:
   session_id_length: 8
 
 server:
+  database: postgresql://postgres:password@localhost:5432/crosspipe?sslmode=disable
   http:
     host: 127.0.0.1
     port: 8081

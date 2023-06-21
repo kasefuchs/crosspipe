@@ -15,7 +15,6 @@ part 'application.g.dart';
 class ApplicationConfig with _$ApplicationConfig {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ApplicationConfig({
-    required String databaseUrl,
     required LoggerConfig logger,
     required SecurityConfig security,
     required ServerConfig server,

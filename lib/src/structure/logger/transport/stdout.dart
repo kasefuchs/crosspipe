@@ -72,7 +72,7 @@ class StdoutLoggerTransport
       if (record.object != null) {
         String formattedObject =
             BetterAnsiPen.fromColor(objectColor)(record.object.toString());
-        output += ' $formattedObject';
+        output += '\n$formattedObject';
       }
     }
     return output;

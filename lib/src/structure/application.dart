@@ -20,7 +20,7 @@ class Application {
   late final PrismaClient prisma;
 
   Application(this.config) {
-    prisma = PrismaClient(datasources: Datasources(db: config.databaseUrl));
+    prisma = PrismaClient(datasources: Datasources(db: config.server.database));
     log = Logger(this);
     http = HttpServer(this);
     wsHandler = WebSocketHandler(this);

@@ -9,6 +9,7 @@ part 'server.g.dart';
 class ServerConfig with _$ServerConfig {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ServerConfig({
+    required String database,
     required HttpServerConfig http,
   }) = _ServerConfig;
 
