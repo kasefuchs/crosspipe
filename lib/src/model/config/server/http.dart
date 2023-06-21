@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'http.freezed.dart';
+
 part 'http.g.dart';
 
 @freezed
@@ -9,6 +10,7 @@ class HttpServerConfig with _$HttpServerConfig {
   const factory HttpServerConfig({
     @Default('127.0.0.1') String host,
     @Default(8080) int port,
+    @Default('X-Forwarded-For') forwardedForHeader,
   }) = _HttpServerConfig;
 
   factory HttpServerConfig.fromJson(Map<String, dynamic> json) =>

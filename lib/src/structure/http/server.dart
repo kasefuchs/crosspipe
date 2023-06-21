@@ -4,21 +4,25 @@ import 'dart:io' as IO;
 import '../../model/config/server/http.dart';
 import '../application.dart';
 import '../logger/logger.dart';
+import 'request.dart';
 import 'response.dart';
 
 class HttpServer {
-  final HttpServerConfig config;
+  late final HttpServerConfig config;
 
-  final Logger log;
+  late final Logger log;
 
   final Map<String, Future<void> Function(HttpRequest, HttpResponse)> _routes =
       {};
 
   late final IO.HttpServer _http;
 
-  HttpServer(Application application)
-      : config = application.config.server.http,
-        log = application.log.child('HTTP Server');
+  HttpServer(Application application) {
+    config = application.config.server.http;
+    log = application.log.child('HTTP Server');
+
+    BetterHttpRequest.forwardedForHeader = config.forwardedForHeader;
+  }
 
   Future<void> bind() async {
     try {
@@ -53,6 +57,8 @@ class HttpServer {
 
     Future<void> Function(HttpRequest, HttpResponse)? handler =
         _routes[routeKey];
+
+    log.info('${request.ip} ${request.method} $routeKey');
 
     (handler ?? _handleNotFound)(request, request.response);
   }
