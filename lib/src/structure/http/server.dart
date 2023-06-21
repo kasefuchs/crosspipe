@@ -18,14 +18,14 @@ class HttpServer {
 
   HttpServer(Application application)
       : config = application.config.server.http,
-        log = application.log.child('Server');
+        log = application.log.child('HTTP Server');
 
   Future<void> bind() async {
     try {
       _http = await IO.HttpServer.bind(config.host, config.port);
 
       log.info(
-          'Server on ${config.host}:${config.port} is now active and ready to accept incoming connections');
+          'HTTP Server on ${config.host}:${config.port} is now active and ready to accept incoming connections');
 
       await for (HttpRequest request in _http) await _handle(request);
     } on SocketException {
