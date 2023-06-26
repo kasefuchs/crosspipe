@@ -1,28 +1,28 @@
-FROM dart:stable AS build
+FROM dart:stable AS builder
 
-# Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+# Install Node.js & make
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs make
 
 # Copy sources
 WORKDIR /app
 COPY . .
 
-# Install depedencies
-RUN dart pub get
-RUN npm install
+# Build application executable
+RUN make
 
-# Generate schemas
-RUN make generate-schemas
+FROM alpine:latest
 
-# Compile binary
-RUN make build-binary
-
-FROM scratch
+# Copy runtime dependencies
+COPY --from=builder /runtime/ /
+COPY --from=odroe/prisma-dart:latest / /
 
 WORKDIR /bin
 
-COPY --from=build /runtime/ /
-COPY --from=build /app/build/crosspipe .
+# Copy application executable
+COPY --from=builder /app/build/crosspipe .
 
-CMD ["crosspipe", "start", "-c", "/app/config.yaml"]
+# Copy Prisma Engine
+COPY --from=builder /app/node_modules/prisma/query-engine-* .
+
+CMD ["crosspipe", "start", "-c", "/config.yaml"]
