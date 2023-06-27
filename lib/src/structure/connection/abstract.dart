@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'dart:math';
 
 import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/abstract.dart';
-import '../../utility/id.dart';
 import '../application.dart';
 import '../logger/logger.dart';
 import '../prisma/client.dart';
@@ -30,10 +30,7 @@ abstract class AbstractConnection<StreamType extends Stream> {
   bool identified = false;
 
   AbstractConnection(this.application, this.socket) {
-    sessionId = generateRandomId(
-      application.config.security.sessionIdLength,
-      application.connections.keys,
-    );
+    sessionId = generateRandomId();
     log = application.log.child('Session $sessionId');
   }
 
@@ -43,6 +40,27 @@ abstract class AbstractConnection<StreamType extends Stream> {
       application.config.security.heartbeatTimeout,
       () => close(CloseEventData.SessionTimedOut),
     );
+  }
+
+  String generateRandomId() {
+    Random random = Random.secure();
+
+    late String result;
+    late bool exists;
+
+    do {
+      Iterable<int> rawValues = List.generate(
+        application.config.security.sessionIdLength,
+        (_) => random.nextInt(16),
+      );
+
+      Iterable<String> hexValues =
+          rawValues.map((value) => value.toRadixString(16));
+
+      result = hexValues.join();
+      exists = application.connections.keys.contains(result);
+    } while (exists);
+    return result;
   }
 
   void setIdentifyTimeout() {

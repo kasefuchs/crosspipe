@@ -20,3 +20,4 @@ dependencies:
   freezed_annotation: ^2.2.0
   orm: ^3.4.3
   dart_console: ^1.2.0
+  yaml_extension: ^1.0.2
