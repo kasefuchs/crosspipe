@@ -1,5 +1,6 @@
 import 'package:bcrypt/bcrypt.dart';
 import 'package:crosspipe/crosspipe.dart';
+import 'package:foxid/foxid.dart';
 
 import 'abstract.dart';
 
@@ -40,6 +41,7 @@ class UserCreateCommand extends AbstractUserCommand {
 
     User user = await application.prisma.user.create(
       data: UserCreateInput(
+          id: FOxID.generate().toJson(),
           name: username,
           group: GroupCreateNestedOneWithoutUsersInput(
             connect: GroupWhereUniqueInput(

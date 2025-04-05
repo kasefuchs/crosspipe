@@ -1,4 +1,5 @@
 import 'package:crosspipe/crosspipe.dart';
+import 'package:foxid/foxid.dart';
 
 import 'abstract.dart';
 
@@ -30,6 +31,7 @@ class GroupCreateCommand extends AbstractGroupCommand {
 
     Group group = await application.prisma.group.create(
       data: GroupCreateInput(
+        id: FOxID.generate().toJson(),
         name: argResults!['name'],
         permissions: permissions,
         allowLoginIfNoPasswordSet:

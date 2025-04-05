@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:foxid/foxid.dart';
+
 import '../../model/enum/socket/close.dart';
 import '../../model/enum/socket/payload.dart';
 import '../../model/payload/data/abstract.dart';
@@ -30,7 +32,7 @@ abstract class AbstractConnection<StreamType extends Stream> {
   bool identified = false;
 
   AbstractConnection(this.application, this.socket) {
-    sessionId = generateRandomId();
+    sessionId = FOxID.generate().toJson();
     log = application.log.child('Session $sessionId');
   }
 
@@ -40,27 +42,6 @@ abstract class AbstractConnection<StreamType extends Stream> {
       application.config.security.heartbeatTimeout,
       () => close(CloseEventData.SessionTimedOut),
     );
-  }
-
-  String generateRandomId() {
-    Random random = Random.secure();
-
-    late String result;
-    late bool exists;
-
-    do {
-      Iterable<int> rawValues = List.generate(
-        application.config.security.sessionIdLength,
-        (_) => random.nextInt(16),
-      );
-
-      Iterable<String> hexValues =
-          rawValues.map((value) => value.toRadixString(16));
-
-      result = hexValues.join();
-      exists = application.connections.keys.contains(result);
-    } while (exists);
-    return result;
   }
 
   void setIdentifyTimeout() {

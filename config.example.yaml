@@ -41,7 +41,6 @@ logger:
 security:
   heartbeat_timeout: 45000
   identify_timeout: 30000
-  session_id_length: 8
 
 server:
   database: postgresql://postgres:password@localhost:5432/crosspipe?sslmode=disable

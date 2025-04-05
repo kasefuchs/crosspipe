@@ -21,3 +21,4 @@ dependencies:
   orm: ^3.4.3
   dart_console: ^1.2.0
   yaml_extension: ^1.0.2
+  foxid: ^1.3.0

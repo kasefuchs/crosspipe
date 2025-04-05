@@ -11,7 +11,6 @@ class SecurityConfig with _$SecurityConfig {
   const factory SecurityConfig({
     @DurationConverter() required Duration identifyTimeout,
     @DurationConverter() required Duration heartbeatTimeout,
-    @Default(16) int sessionIdLength,
   }) = _SecurityConfig;
 
   factory SecurityConfig.fromJson(Map<String, dynamic> json) =>
